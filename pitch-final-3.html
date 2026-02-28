@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Future Starts Now</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fdf2f8;--card:#fff;--rose:#ec4899;--rose2:#db2777;--violet:#8b5cf6;--of:#00aff0;--tiktok:#fe2c55;--insta:#e1306c;--insta2:#833ab4;--green:#10b981;--dark:#1e1b3a;--muted:#7c6882;--soft:#a78a9e;--border:rgba(236,72,153,.08)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:linear-gradient(170deg,#fdf2f8 0%,#fce7f3 12%,#f3e8ff 30%,#e0f2fe 50%,#fce7f3 70%,#fff1f2 100%);color:var(--dark);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+@keyframes slideUp{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes shine{0%{left:-100%}100%{left:200%}}
+@keyframes bgPan{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes glow{0%,100%{opacity:.5}50%{opacity:1}}
+@keyframes gradientBorder{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes drawLine{to{stroke-dashoffset:0}}
+@keyframes dotPop{to{opacity:1;transform:scale(1)}}
+.fade{opacity:0;transform:translateY(40px);transition:all .9s cubic-bezier(.16,1,.3,1)}.fade.v{opacity:1;transform:none}
+.stagger.v>[class]{opacity:0;animation:fadeUp .6s cubic-bezier(.16,1,.3,1) forwards}
+.stagger.v>:nth-child(1){animation-delay:.05s}.stagger.v>:nth-child(2){animation-delay:.12s}.stagger.v>:nth-child(3){animation-delay:.19s}.stagger.v>:nth-child(4){animation-delay:.26s}
+.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--tiktok),var(--insta),var(--of));z-index:999;box-shadow:0 0 12px rgba(236,72,153,.4);transition:width .1s}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px;position:relative;z-index:3}
+.ic{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.ic svg{display:block}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 28px;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+nav.s{background:rgba(253,242,248,.92);border-bottom:1px solid rgba(236,72,153,.06);box-shadow:0 2px 20px rgba(236,72,153,.05)}
+.logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;background:linear-gradient(135deg,var(--tiktok),var(--insta),var(--of));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:flex;align-items:center;gap:8px}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;transition:color .3s}.nav-links a:hover{color:var(--dark)}
+.nav-cta{background:linear-gradient(135deg,var(--rose),var(--violet))!important;color:#fff!important;padding:8px 22px;border-radius:10px;font-weight:700!important;box-shadow:0 4px 18px rgba(236,72,153,.2)}
+@media(max-width:640px){.nav-links{display:none}}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 20px 80px;position:relative}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:30px;background:rgba(236,72,153,.06);border:1px solid rgba(236,72,153,.12);font-size:12px;color:var(--rose);font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:32px;animation:slideUp .8s ease both}
+.hero-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--rose);animation:glow 2s ease-in-out infinite}
+.hero h1{font-size:clamp(36px,7vw,64px);font-weight:800;font-family:'Playfair Display',serif;line-height:1.1;margin-bottom:24px;animation:slideUp .8s ease .15s both}
+.hero h1 .l1{display:block;color:var(--dark)}
+.hero h1 .l2{display:block;background:linear-gradient(135deg,var(--tiktok),var(--insta),var(--insta2));background-size:200% auto;animation:shimmer 3s linear infinite;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1 .l3{display:block;background:linear-gradient(135deg,var(--of),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero>p{color:var(--muted);font-size:18px;line-height:1.7;max-width:500px;margin-bottom:40px;animation:slideUp .8s ease .3s both}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--tiktok),var(--insta),var(--insta2));color:#fff;padding:18px 48px;border-radius:16px;font-size:17px;font-weight:700;text-decoration:none;position:relative;overflow:hidden;animation:slideUp .8s ease .45s both;transition:transform .3s,box-shadow .3s;box-shadow:0 8px 32px rgba(236,72,153,.25)}
+.hero-cta:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(236,72,153,.35)}
+.hero-cta .shine{position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);animation:shine 3s ease-in-out infinite}
+.notif-container{position:absolute;right:-20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:16px;pointer-events:none}
+@media(max-width:768px){.notif-container{display:none}}
+.notif{background:rgba(255,255,255,.88);border:1px solid var(--border);border-radius:14px;padding:12px 18px;display:flex;align-items:center;gap:12px;min-width:240px;box-shadow:0 4px 20px rgba(236,72,153,.08);animation:fadeUp .6s ease both}
+.notif:nth-child(1){animation-delay:.5s}.notif:nth-child(2){animation-delay:1s}.notif:nth-child(3){animation-delay:1.5s}
+.notif .ni{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.marquee-wrap{overflow:hidden;padding:16px 0;margin:32px -24px;position:relative}
+.marquee-wrap::before,.marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:60px;z-index:2}
+.marquee-wrap::before{left:0;background:linear-gradient(90deg,#fce7f3,transparent)}
+.marquee-wrap::after{right:0;background:linear-gradient(-90deg,#fce7f3,transparent)}
+.marquee{display:flex;gap:24px;animation:marquee 20s linear infinite;width:max-content}
+.marquee-item{display:flex;align-items:center;gap:8px;white-space:nowrap;font-size:13px;font-weight:600;color:var(--muted);background:rgba(255,255,255,.6);border:1px solid var(--border);padding:8px 18px;border-radius:30px}
+.section{padding:100px 0}
+.stag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
+.stit{font-size:clamp(28px,4vw,40px);font-weight:800;font-family:'Playfair Display',serif;margin-bottom:10px;line-height:1.2}
+.ssub{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:44px;max-width:520px}
+.glass{background:rgba(255,255,255,.75);border:1px solid var(--border);border-radius:20px;padding:32px;transition:all .4s;box-shadow:0 4px 24px rgba(236,72,153,.04)}
+.glass:hover{border-color:rgba(236,72,153,.15);background:rgba(255,255,255,.88);box-shadow:0 8px 32px rgba(236,72,153,.08);transform:translateY(-2px)}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:640px){.compare{grid-template-columns:1fr}}
+.old-way{background:linear-gradient(145deg,#fff0f0,#ffe8e8);border:1px solid rgba(239,68,68,.15);border-radius:24px;padding:36px}
+.smart-way{background:linear-gradient(145deg,#ecfdf5,#d1fae5);border:1px solid rgba(16,185,129,.15);border-radius:24px;padding:36px;position:relative;overflow:hidden}
+.smart-way::before{content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(16,185,129,.04),transparent);animation:spin 10s linear infinite}
+.ctit{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:2px;margin-bottom:24px;display:flex;align-items:center;gap:8px}
+.old-way .ctit{color:#ef4444}.smart-way .ctit{color:var(--green)}
+.ci{display:flex;gap:12px;margin-bottom:18px;align-items:flex-start}
+.ci .ic{margin-top:2px}.ci p{font-size:13.5px;line-height:1.6;margin:0;color:var(--muted)}
+.phone-section{display:flex;align-items:center;gap:60px;margin-top:60px}
+@media(max-width:768px){.phone-section{flex-direction:column;gap:40px}}
+.phone{width:280px;height:560px;background:linear-gradient(145deg,#1e1b3a,#2d1b4e);border-radius:36px;border:3px solid rgba(139,92,246,.25);padding:12px;flex-shrink:0;box-shadow:0 20px 60px rgba(139,92,246,.15)}
+.phone-screen{width:100%;height:100%;background:linear-gradient(145deg,#1a1a2e,#2d1b3d);border-radius:28px;overflow:hidden;padding:16px;display:flex;flex-direction:column;color:#f8f8f8}
+.pn{padding:12px;border-radius:14px;display:flex;align-items:center;gap:10px;animation:fadeUp .6s ease both;margin-bottom:8px}
+.pn:nth-child(1){animation-delay:.3s}.pn:nth-child(2){animation-delay:.6s}.pn:nth-child(3){animation-delay:.9s}.pn:nth-child(4){animation-delay:1.2s}.pn:nth-child(5){animation-delay:1.5s}
+.pni{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.platforms{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:500px){.platforms{grid-template-columns:1fr}}
+.pc{border-radius:20px;padding:28px;text-align:center;border:1px solid var(--border);transition:all .5s cubic-bezier(.175,.885,.32,1.275);background:rgba(255,255,255,.75)}
+.pc:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 16px 40px rgba(236,72,153,.1)}
+.pc .pc-icon{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.timeline{position:relative;padding-left:60px}
+.timeline::before{content:'';position:absolute;left:22px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--tiktok),var(--insta),var(--of),var(--green))}
+.tli{position:relative;margin-bottom:16px}
+.tld{position:absolute;left:-48px;top:20px;width:16px;height:16px;border-radius:50%;border:3px solid}
+.tld::after{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;animation:glow 2s ease-in-out infinite;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+.tlc{border-radius:18px;padding:24px 28px;border:1px solid var(--border);transition:all .4s;background:rgba(255,255,255,.7)}
+.tlc:hover{border-color:rgba(236,72,153,.15);transform:translateX(6px);box-shadow:0 8px 28px rgba(236,72,153,.06)}
+.tlb{display:inline-block;padding:3px 12px;border-radius:8px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.tlt{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.tlt span{font-size:11px;background:rgba(255,255,255,.6);border:1px solid var(--border);padding:4px 10px;border-radius:6px;color:var(--muted);display:inline-flex;align-items:center;gap:4px}
+.earn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:640px){.earn-grid{grid-template-columns:1fr}}
+.ec{border-radius:22px;padding:28px;text-align:center;border:1px solid var(--border);transition:all .4s;position:relative;overflow:hidden;background:rgba(255,255,255,.7)}
+.ec:hover{transform:translateY(-6px);box-shadow:0 12px 36px rgba(236,72,153,.08)}
+.ec.feat{border-color:rgba(236,72,153,.2);box-shadow:0 4px 24px rgba(236,72,153,.06)}
+.ec.feat::before{content:'MOST COMMON';position:absolute;top:14px;right:-24px;background:linear-gradient(135deg,var(--tiktok),var(--insta));color:#fff;font-size:8px;font-weight:800;padding:4px 30px;transform:rotate(45deg);letter-spacing:1px}
+.ea{font-size:36px;font-weight:800;font-family:'Playfair Display',serif;margin:8px 0 4px}
+.et{font-size:12px;font-weight:700;padding:6px 14px;border-radius:8px;display:inline-block;margin-top:12px}
+.chart-wrap{background:rgba(255,255,255,.8);border:1px solid var(--border);border-radius:24px;padding:32px 24px 24px;margin-top:32px}
+.chart-wrap h3{font-size:18px;font-weight:800;font-family:'Playfair Display',serif;margin-bottom:4px}
+.chart-wrap p{font-size:12px;color:var(--muted);margin-bottom:20px}
+.chart-svg{width:100%;height:auto}
+.glow-border{position:relative;border-radius:22px;padding:3px}
+.glow-border::before{content:'';position:absolute;inset:0;border-radius:22px;background:linear-gradient(135deg,var(--tiktok),var(--insta),var(--of),var(--violet),var(--tiktok));background-size:300% 300%;animation:gradientBorder 4s linear infinite;z-index:-1}
+.glow-border-inner{background:rgba(255,255,255,.9);border-radius:19px;padding:28px}
+.cta-box{position:relative;border-radius:28px;padding:56px 40px;text-align:center;overflow:hidden;background:linear-gradient(135deg,rgba(254,44,85,.06),rgba(225,48,108,.06),rgba(0,175,240,.04));border:1px solid rgba(236,72,153,.1)}
+.cta-box::before{content:'';position:absolute;inset:-2px;border-radius:30px;background:linear-gradient(135deg,var(--tiktok),var(--insta),var(--of));z-index:-1;opacity:.1;animation:bgPan 8s ease-in-out infinite;background-size:300% 300%}
+.cta-deal{display:inline-flex;gap:32px;background:rgba(255,255,255,.7);border:1px solid var(--border);border-radius:16px;padding:20px 36px;flex-wrap:wrap;justify-content:center;margin:28px 0}
+.cta-deal .sep{width:1px;background:rgba(236,72,153,.1);align-self:stretch}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--tiktok),var(--insta),var(--insta2));color:#fff;padding:18px 52px;border-radius:16px;font-size:17px;font-weight:700;border:none;cursor:pointer;position:relative;overflow:hidden;font-family:'Outfit',sans-serif;box-shadow:0 8px 32px rgba(236,72,153,.25);transition:all .3s}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(236,72,153,.35)}
+.cta-btn .shine{position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);animation:shine 3s ease-in-out infinite}
+.fq{border:1px solid var(--border);border-radius:16px;margin-bottom:8px;overflow:hidden;transition:all .3s;background:rgba(255,255,255,.5)}
+.fq.open{border-color:rgba(236,72,153,.15);background:rgba(255,255,255,.85);box-shadow:0 4px 20px rgba(236,72,153,.06)}
+.fq-q{width:100%;padding:20px 24px;border:none;background:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;text-align:left;font-family:'Outfit',sans-serif;color:var(--dark);font-size:15px;font-weight:600}
+.fq-q .plus{color:var(--rose);font-size:20px;transition:transform .3s}.fq.open .plus{transform:rotate(45deg)}
+.fq-a{max-height:0;overflow:hidden;transition:max-height .4s,padding .3s;padding:0 24px}
+.fq.open .fq-a{max-height:200px;padding:0 24px 20px}
+.fq-a p{color:var(--muted);font-size:14px;line-height:1.7}
+.footer{text-align:center;padding:40px 20px 60px;color:var(--soft);font-size:11px}
+.mo-bg{display:none;position:fixed;inset:0;background:rgba(30,27,58,.5);z-index:999;align-items:center;justify-content:center;padding:20px}
+.mo-bg.open{display:flex}
+.mo{background:#fff;border:1px solid var(--border);border-radius:24px;padding:32px;max-width:520px;width:100%;max-height:85vh;overflow-y:auto;animation:scaleIn .3s ease;box-shadow:0 20px 60px rgba(236,72,153,.12)}
+.mo-x{background:rgba(236,72,153,.06);border:none;width:36px;height:36px;border-radius:12px;cursor:pointer;font-size:16px;color:var(--muted);display:flex;align-items:center;justify-content:center}.mo-x:hover{background:rgba(236,72,153,.12);color:var(--dark)}
+.chat-b{padding:10px 16px;border-radius:16px;max-width:80%;font-size:13px;line-height:1.5;margin-bottom:8px}
+.ch-fan{background:#f5f0f2;border:1px solid rgba(236,72,153,.06);border-bottom-left-radius:4px;color:var(--dark)}
+.ch-you{background:linear-gradient(135deg,var(--rose),var(--violet));color:#fff;border-bottom-right-radius:4px;margin-left:auto}
+.ch-s{font-size:9px;font-weight:700;opacity:.5;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
+.mo-note{background:rgba(139,92,246,.06);border-left:3px solid var(--violet);border-radius:12px;padding:14px 18px;margin-bottom:14px}
+.mo-note p,.mo-bonus p{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
+.mo-bonus{background:rgba(0,175,240,.06);border-left:3px solid var(--of);border-radius:12px;padding:14px 18px;margin-bottom:14px}
+.mo-earn{text-align:center;padding:14px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.12);border-radius:12px;font-size:14px;font-weight:700;color:var(--green)}
+</style>
+</head>
+<body>
+
+<!-- SVG SPRITE -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+<symbol id="i-dollar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></symbol>
+<symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 110-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></symbol>
+<symbol id="i-unlock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 019.9-1"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></symbol>
+<symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+<symbol id="i-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></symbol>
+<symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+<symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 3 0 3 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-3 0-3"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+<symbol id="i-trending" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></symbol>
+<!-- Social -->
+<symbol id="s-instagram" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill="currentColor"/></symbol>
+<symbol id="s-tiktok" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.48v-7.13a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-.81.07 4.84 4.84 0 01-2.38-.63v6.95A6.34 6.34 0 0112.49 22a6.34 6.34 0 01-3.08-11.87V6.58A6.34 6.34 0 006.34 15.2 6.34 6.34 0 0019.59 6.69z" fill="currentColor"/></symbol>
+<symbol id="s-reddit" viewBox="0 0 24 24"><path d="M12 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 01-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 01.042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 014 12.744c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 01.14-.197.35.35 0 01.238-.042l2.906.617a1.214 1.214 0 011.108-.645zM9.25 12C8.561 12 8 12.562 8 13.25s.561 1.25 1.25 1.25 1.25-.562 1.25-1.25S9.939 12 9.25 12zm5.5 0c-.689 0-1.25.562-1.25 1.25s.561 1.25 1.25 1.25 1.25-.562 1.25-1.25S15.439 12 14.75 12zm-5.466 3.99a.327.327 0 00-.231.094.33.33 0 000 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 000-.463.33.33 0 00-.462 0c-.545.533-1.684.73-2.512.73-.828 0-1.953-.21-2.486-.744a.326.326 0 00-.231-.08z" fill="currentColor"/></symbol>
+<symbol id="s-x" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/></symbol>
+</svg>
+
+<div class="progress" id="prog"></div>
+<nav id="nav">
+<div class="logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="url(#lg)" stroke-width="2"><defs><linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fe2c55"/><stop offset="50%" stop-color="#e1306c"/><stop offset="100%" stop-color="#00aff0"/></linearGradient></defs><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> YourFuture</div>
+<div class="nav-links"><a href="#why">Why This</a><a href="#reach">Platforms</a><a href="#week">Your Week</a><a href="#earn">Earnings</a><a href="#start" class="nav-cta">Let's Talk</a></div>
+</nav>
+
+<div class="wrap">
+
+<!-- HERO -->
+<section class="hero" id="top">
+<div class="hero-tag"><div class="dot"></div> Now accepting new creators</div>
+<h1><span class="l1">Same confidence.</span><span class="l2">Real money.</span><span class="l3">Zero risk.</span></h1>
+<p>You already have what it takes. We just make sure you get paid for it — without ever putting yourself in danger.</p>
+<a href="#start" class="hero-cta"><span class="shine"></span><svg width="18" height="18" style="margin-right:2px"><use href="#i-trending"/></svg> Show me how →</a>
+
+<div class="notif-container">
+<div class="notif"><div class="ni" style="background:rgba(16,185,129,.1)"><svg width="18" height="18" style="color:#10b981"><use href="#i-dollar"/></svg></div><div><div style="font-size:12px;color:var(--muted)">New subscriber</div><div style="font-size:14px;font-weight:800;color:var(--green)">+€19.99</div></div></div>
+<div class="notif"><div class="ni" style="background:rgba(236,72,153,.08)"><svg width="18" height="18" style="color:#ec4899"><use href="#i-gift"/></svg></div><div><div style="font-size:12px;color:var(--muted)">Fan sent a tip</div><div style="font-size:14px;font-weight:800;color:var(--green)">+€50.00</div></div></div>
+<div class="notif"><div class="ni" style="background:rgba(139,92,246,.08)"><svg width="18" height="18" style="color:#8b5cf6"><use href="#i-unlock"/></svg></div><div><div style="font-size:12px;color:var(--muted)">PPV unlocked</div><div style="font-size:14px;font-weight:800;color:var(--green)">+€25.00</div></div></div>
+</div>
+
+<!-- STATS -->
+<div style="display:flex;gap:14px;margin-top:56px;flex-wrap:wrap;justify-content:center;animation:slideUp .8s ease .6s both">
+<div style="background:linear-gradient(145deg,rgba(255,255,255,.8),rgba(254,44,85,.04));border:1px solid rgba(254,44,85,.15);border-radius:22px;padding:26px 30px;text-align:center;flex:1;min-width:140px;position:relative;overflow:hidden"><div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(254,44,85,.06)"></div><div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:2.5px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:6px"><svg width="14" height="14" style="color:var(--tiktok)"><use href="#i-trending"/></svg> Top earners</div><div style="font-size:38px;font-weight:800;font-family:'Playfair Display',serif;background:linear-gradient(135deg,var(--tiktok),var(--insta));-webkit-background-clip:text;-webkit-text-fill-color:transparent">€20K</div><div style="font-size:11px;color:var(--soft);margin-top:6px;font-weight:500">/month</div></div>
+<div style="background:linear-gradient(145deg,rgba(255,255,255,.8),rgba(139,92,246,.04));border:1px solid rgba(139,92,246,.15);border-radius:22px;padding:26px 30px;text-align:center;flex:1;min-width:140px;position:relative;overflow:hidden"><div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(139,92,246,.06)"></div><div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:2.5px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:6px"><svg width="14" height="14" style="color:var(--violet)"><use href="#i-heart"/></svg> Average</div><div style="font-size:38px;font-weight:800;font-family:'Playfair Display',serif;background:linear-gradient(135deg,var(--insta),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent">€10K</div><div style="font-size:11px;color:var(--soft);margin-top:6px;font-weight:500">/month</div></div>
+<div style="background:linear-gradient(145deg,rgba(255,255,255,.8),rgba(0,175,240,.04));border:1px solid rgba(0,175,240,.15);border-radius:22px;padding:26px 30px;text-align:center;flex:1;min-width:140px;position:relative;overflow:hidden"><div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(0,175,240,.06)"></div><div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:2.5px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:6px"><svg width="14" height="14" style="color:var(--of)"><use href="#i-clock"/></svg> Your time</div><div style="font-size:38px;font-weight:800;font-family:'Playfair Display',serif;background:linear-gradient(135deg,var(--of),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent">2-6h</div><div style="font-size:11px;color:var(--soft);margin-top:6px;font-weight:500">/month total</div></div>
+</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap"><div class="marquee">
+<div class="marquee-item"><svg width="14" height="14" style="color:var(--green)"><use href="#i-dollar"/></svg> Earn while you sleep</div>
+<div class="marquee-item"><svg width="14" height="14" style="color:var(--violet)"><use href="#i-home"/></svg> Work from home</div>
+<div class="marquee-item"><svg width="14" height="14" style="color:var(--of)"><use href="#i-shield"/></svg> 100% anonymous</div>
+<div class="marquee-item"><svg width="14" height="14" style="color:var(--tiktok)"><use href="#i-zap"/></svg> AI-powered growth</div>
+<div class="marquee-item"><svg width="14" height="14" style="color:var(--insta)"><use href="#i-heart"/></svg> Your body, your rules</div>
+<div class="marquee-item"><svg width="14" height="14" style="color:var(--green)"><use href="#i-gift"/></svg> Passive income</div>
+<div class="marquee-item"><svg width="14" height="14" style="color:var(--violet)"><use href="#i-star"/></svg> Premium fans</div>
+<div class="marquee-item"><svg width="14" height="14" style="color:var(--rose)"><use href="#i-check"/></svg> Cancel anytime</div>
+<div class="marquee-item"><svg width="14" height="14" style="color:var(--green)"><use href="#i-dollar"/></svg> Earn while you sleep</div>
+<div class="marquee-item"><svg width="14" height="14" style="color:var(--violet)"><use href="#i-home"/></svg> Work from home</div>
+<div class="marquee-item"><svg width="14" height="14" style="color:var(--of)"><use href="#i-shield"/></svg> 100% anonymous</div>
+<div class="marquee-item"><svg width="14" height="14" style="color:var(--tiktok)"><use href="#i-zap"/></svg> AI-powered growth</div>
+<div class="marquee-item"><svg width="14" height="14" style="color:var(--insta)"><use href="#i-heart"/></svg> Your body, your rules</div>
+<div class="marquee-item"><svg width="14" height="14" style="color:var(--green)"><use href="#i-gift"/></svg> Passive income</div>
+<div class="marquee-item"><svg width="14" height="14" style="color:var(--violet)"><use href="#i-star"/></svg> Premium fans</div>
+<div class="marquee-item"><svg width="14" height="14" style="color:var(--rose)"><use href="#i-check"/></svg> Cancel anytime</div>
+</div></div>
+
+<!-- WHY -->
+<section class="section" id="why">
+<div class="fade"><div class="stag" style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.1);color:#ef4444"><svg width="12" height="12"><use href="#i-shield"/></svg> The Truth</div>
+<h2 class="stit">Two ways to use what you've got.<br><span style="color:var(--green)">Only one</span> doesn't destroy you.</h2>
+<p class="ssub">You're smart enough to know the difference.</p></div>
+<div class="fade compare">
+<div class="old-way"><div class="ctit"><svg width="16" height="16" style="color:#ef4444"><use href="#i-x"/></svg> The old way</div>
+<div class="ci"><div class="ic"><svg width="16" height="16" style="color:#ef4444"><use href="#i-x"/></svg></div><p>Strangers touching you. No control over who, when, where.</p></div>
+<div class="ci"><div class="ic"><svg width="16" height="16" style="color:#ef4444"><use href="#i-x"/></svg></div><p>Dark alleys, hotel rooms. Always looking over your shoulder.</p></div>
+<div class="ci"><div class="ic"><svg width="16" height="16" style="color:#ef4444"><use href="#i-x"/></svg></div><p>One client, one hour. Your body is your time clock.</p></div>
+<div class="ci"><div class="ic"><svg width="16" height="16" style="color:#ef4444"><use href="#i-x"/></svg></div><p>Clients who disrespect you. Treat you like nothing.</p></div>
+<div class="ci"><div class="ic"><svg width="16" height="16" style="color:#ef4444"><use href="#i-x"/></svg></div><p>No future. No growth. Grinding until you break.</p></div></div>
+<div class="smart-way"><div class="ctit"><svg width="16" height="16" style="color:var(--green)"><use href="#i-check"/></svg> The smart way</div>
+<div class="ci"><div class="ic"><svg width="16" height="16" style="color:var(--green)"><use href="#i-home"/></svg></div><p>Work from your couch. Nobody touches you.</p></div>
+<div class="ci"><div class="ic"><svg width="16" height="16" style="color:var(--green)"><use href="#i-shield"/></svg></div><p>Completely anonymous. No one knows.</p></div>
+<div class="ci"><div class="ic"><svg width="16" height="16" style="color:var(--green)"><use href="#i-rocket"/></svg></div><p>Shoot once, earn forever. Content works while you sleep.</p></div>
+<div class="ci"><div class="ic"><svg width="16" height="16" style="color:var(--green)"><use href="#i-heart"/></svg></div><p>Fans who adore you, tip you, come back for more.</p></div>
+<div class="ci"><div class="ic"><svg width="16" height="16" style="color:var(--green)"><use href="#i-dollar"/></svg></div><p>A real business. Recurring income. Freedom.</p></div></div>
+</div>
+
+<!-- PHONE -->
+<div class="fade phone-section">
+<div class="phone"><div class="phone-screen"><div style="text-align:center;padding:8px 0 16px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:12px"><div style="font-size:14px;font-weight:700">Your Earnings Today</div><div style="font-size:10px;color:#8888aa">Tuesday, 2:34 PM</div></div>
+<div class="pn" style="background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.15)"><div class="pni" style="background:rgba(16,185,129,.2)"><svg width="14" height="14" style="color:#34d399"><use href="#i-dollar"/></svg></div><div style="flex:1"><div style="font-size:11px;color:#8888aa">New subscriber</div><div style="font-size:13px;font-weight:700;color:#34d399">+€19.99</div></div></div>
+<div class="pn" style="background:rgba(232,184,75,.1);border:1px solid rgba(232,184,75,.15)"><div class="pni" style="background:rgba(232,184,75,.2)"><svg width="14" height="14" style="color:#f5d280"><use href="#i-gift"/></svg></div><div style="flex:1"><div style="font-size:11px;color:#8888aa">Fan tipped</div><div style="font-size:13px;font-weight:700;color:#f5d280">+€35.00</div></div></div>
+<div class="pn" style="background:rgba(244,114,182,.1);border:1px solid rgba(244,114,182,.15)"><div class="pni" style="background:rgba(244,114,182,.2)"><svg width="14" height="14" style="color:#f472b6"><use href="#i-unlock"/></svg></div><div style="flex:1"><div style="font-size:11px;color:#8888aa">PPV unlocked</div><div style="font-size:13px;font-weight:700;color:#f472b6">+€15.00</div></div></div>
+<div class="pn" style="background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.15)"><div class="pni" style="background:rgba(139,92,246,.2)"><svg width="14" height="14" style="color:#a78bfa"><use href="#i-chat"/></svg></div><div style="flex:1"><div style="font-size:11px;color:#8888aa">Custom request</div><div style="font-size:13px;font-weight:700;color:#a78bfa">+€50.00</div></div></div>
+<div class="pn" style="background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.15)"><div class="pni" style="background:rgba(16,185,129,.2)"><svg width="14" height="14" style="color:#34d399"><use href="#i-dollar"/></svg></div><div style="flex:1"><div style="font-size:11px;color:#8888aa">3 new subscribers</div><div style="font-size:13px;font-weight:700;color:#34d399">+€59.97</div></div></div>
+<div style="text-align:center;padding:12px 0 4px;border-top:1px solid rgba(255,255,255,.06);margin-top:auto"><span style="font-size:10px;color:#8888aa">TODAY'S TOTAL</span><div style="font-size:22px;font-weight:800;color:#34d399">€179.96</div></div>
+</div></div>
+<div>
+<h3 style="font-size:22px;font-weight:800;margin-bottom:12px;font-family:'Playfair Display',serif">This is a random <span style="color:var(--insta)">Tuesday afternoon.</span></h3>
+<p style="color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:20px">You were at the gym. Having coffee. Watching Netflix. And your phone just kept buzzing with money.</p>
+<p style="color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:20px">AI handles fans, automation posts content, subs keep paying. <strong style="color:var(--dark)">Every. Single. Day.</strong></p>
+<div style="display:flex;gap:12px;flex-wrap:wrap">
+<div class="glow-border" style="flex:1;min-width:100px"><div class="glow-border-inner" style="text-align:center;padding:14px"><div style="font-size:11px;color:var(--muted)">While you slept</div><div style="font-size:20px;font-weight:800;color:var(--green)">€89</div></div></div>
+<div class="glow-border" style="flex:1;min-width:100px"><div class="glow-border-inner" style="text-align:center;padding:14px"><div style="font-size:11px;color:var(--muted)">This week</div><div style="font-size:20px;font-weight:800;color:var(--insta)">€847</div></div></div>
+<div class="glow-border" style="flex:1;min-width:100px"><div class="glow-border-inner" style="text-align:center;padding:14px"><div style="font-size:11px;color:var(--muted)">This month</div><div style="font-size:20px;font-weight:800;color:var(--tiktok)">€4,200</div></div></div>
+</div></div></div></section>
+
+<!-- PLATFORMS -->
+<section class="section" id="reach">
+<div class="fade"><div class="stag" style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);color:var(--violet)"><svg width="12" height="12"><use href="#i-globe"/></svg> Your Reach</div>
+<h2 class="stit">We go where your fans are.<br><span style="color:var(--insta)">Every platform. Every day.</span></h2>
+<p class="ssub">You shoot once. We turn it into 15-25 daily posts across every channel.</p></div>
+<div class="fade stagger platforms">
+<div class="pc"><div class="pc-icon" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)"><svg width="26" height="26" style="color:#fff"><use href="#s-instagram"/></svg></div><h3 style="color:var(--insta);font-size:17px;font-weight:700;margin:6px 0">Instagram</h3><p style="color:var(--muted);font-size:12.5px;line-height:1.5">Reels, stories & aesthetic posts that convert followers.</p><div style="display:inline-block;padding:4px 14px;border-radius:8px;font-size:11px;font-weight:700;margin-top:14px;background:rgba(225,48,108,.08);color:var(--insta)">3x daily</div></div>
+<div class="pc"><div class="pc-icon" style="background:#010101"><svg width="26" height="26" style="color:#fff"><use href="#s-tiktok"/></svg></div><h3 style="color:var(--tiktok);font-size:17px;font-weight:700;margin:6px 0">TikTok</h3><p style="color:var(--muted);font-size:12.5px;line-height:1.5">Viral clips reaching millions overnight.</p><div style="display:inline-block;padding:4px 14px;border-radius:8px;font-size:11px;font-weight:700;margin-top:14px;background:rgba(254,44,85,.08);color:var(--tiktok)">2-3x daily</div></div>
+<div class="pc"><div class="pc-icon" style="background:#ff4500"><svg width="26" height="26" style="color:#fff"><use href="#s-reddit"/></svg></div><h3 style="color:#ff4500;font-size:17px;font-weight:700;margin:6px 0">Reddit</h3><p style="color:var(--muted);font-size:12.5px;line-height:1.5">#1 traffic source. Loyal fans who spend big.</p><div style="display:inline-block;padding:4px 14px;border-radius:8px;font-size:11px;font-weight:700;margin-top:14px;background:rgba(255,69,0,.08);color:#ff4500">5-10x daily</div></div>
+<div class="pc"><div class="pc-icon" style="background:#0f1419"><svg width="26" height="26" style="color:#fff"><use href="#s-x"/></svg></div><h3 style="color:#0f1419;font-size:17px;font-weight:700;margin:6px 0">X (Twitter)</h3><p style="color:var(--muted);font-size:12.5px;line-height:1.5">Engagement & personality = monthly payers.</p><div style="display:inline-block;padding:4px 14px;border-radius:8px;font-size:11px;font-weight:700;margin-top:14px;background:rgba(15,20,25,.06);color:#0f1419">3-5x daily</div></div>
+</div>
+<div class="fade glass" style="text-align:center;padding:24px;margin-top:20px"><p style="font-size:15px;font-weight:600"><span style="background:linear-gradient(135deg,var(--tiktok),var(--insta));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:24px;font-weight:800">15-25 posts per day.</span> <svg width="16" height="16" style="color:var(--violet);vertical-align:middle"><use href="#i-zap"/></svg> <span style="color:var(--muted)">All automated.</span></p></div>
+</section>
+
+<!-- YOUR WEEK -->
+<section class="section" id="week">
+<div class="fade"><div class="stag" style="background:rgba(0,175,240,.06);border:1px solid rgba(0,175,240,.12);color:var(--of)"><svg width="12" height="12"><use href="#i-calendar"/></svg> Your Week</div>
+<h2 class="stit">One day of work.<br><span style="color:var(--tiktok)">Six days of earning.</span></h2>
+<p class="ssub">You show up once. We handle the other 164 hours.</p></div>
+<div class="fade timeline">
+<div class="tli"><div class="tld" style="border-color:var(--tiktok);color:var(--tiktok)"></div><div class="tlc"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px"><h3 style="font-size:16px;font-weight:800;color:var(--tiktok);display:flex;align-items:center;gap:6px"><svg width="16" height="16"><use href="#i-camera"/></svg> Day 1 — Content Day</h3><div class="tlb" style="background:rgba(254,44,85,.1);color:var(--tiktok)">YOUR DAY • 3-4 HRS</div></div><p style="color:var(--muted);font-size:13.5px;line-height:1.65">We meet up or you send material. We guide poses, outfits, angles.</p><div class="tlt"><span><svg width="10" height="10"><use href="#i-camera"/></svg> Photos</span><span><svg width="10" height="10"><use href="#i-video"/></svg> Videos</span><span>TikToks</span><span>Stories</span></div></div></div>
+<div class="tli"><div class="tld" style="border-color:var(--insta);color:var(--insta)"></div><div class="tlc"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px"><h3 style="font-size:16px;font-weight:800;color:var(--insta);display:flex;align-items:center;gap:6px"><svg width="16" height="16"><use href="#i-edit"/></svg> Day 2 — Edit & Format</h3><div class="tlb" style="background:rgba(225,48,108,.08);color:var(--insta)">WE DO THIS</div></div><p style="color:var(--muted);font-size:13.5px;line-height:1.65">Right sizes, formats, hashtags, captions. Custom per platform.</p><div class="tlt"><span>Retouch</span><span>Resize</span><span>Hashtags</span><span>Captions</span></div></div></div>
+<div class="tli"><div class="tld" style="border-color:var(--of);color:var(--of)"></div><div class="tlc"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px"><h3 style="font-size:16px;font-weight:800;color:var(--of);display:flex;align-items:center;gap:6px"><svg width="16" height="16"><use href="#i-calendar"/></svg> Day 3 — Schedule</h3><div class="tlb" style="background:rgba(0,175,240,.08);color:var(--of)">WE DO THIS</div></div><p style="color:var(--muted);font-size:13.5px;line-height:1.65">3x daily at 10AM, 3PM, 9PM. Every channel. Automated.</p><div class="tlt"><span><svg width="10" height="10"><use href="#i-calendar"/></svg> Calendar</span><span><svg width="10" height="10"><use href="#i-clock"/></svg> Auto 3x/day</span><span><svg width="10" height="10"><use href="#i-globe"/></svg> All platforms</span></div></div></div>
+<div class="tli"><div class="tld" style="border-color:var(--green);color:var(--green)"></div><div class="tlc"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px"><h3 style="font-size:16px;font-weight:800;color:var(--green);display:flex;align-items:center;gap:6px"><svg width="16" height="16"><use href="#i-trending"/></svg> Day 4-5 — Growth</h3><div class="tlb" style="background:rgba(16,185,129,.08);color:var(--green)">WE DO THIS</div></div><p style="color:var(--muted);font-size:13.5px;line-height:1.65">AI chats fans 24/7. PPV at optimal times. Money flows.</p><div class="tlt"><span><svg width="10" height="10"><use href="#i-chat"/></svg> AI chats</span><span><svg width="10" height="10"><use href="#i-lock"/></svg> PPV</span><span><svg width="10" height="10"><use href="#i-dollar"/></svg> Tips</span></div></div></div>
+<div class="tli"><div class="tld" style="border-color:var(--violet);color:var(--violet)"></div><div class="tlc"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px"><h3 style="font-size:16px;font-weight:800;color:var(--muted);display:flex;align-items:center;gap:6px"><svg width="16" height="16" style="color:var(--violet)"><use href="#i-zap"/></svg> Day 6-7 — Autopilot</h3><div class="tlb" style="background:rgba(139,92,246,.08);color:var(--violet)">AUTOMATIC</div></div><p style="color:var(--muted);font-size:13.5px;line-height:1.65">System runs. Posts go out. Fans replied to. Money in.</p></div></div>
+</div>
+<div class="fade glow-border" style="margin-top:32px"><div class="glow-border-inner" style="text-align:center;padding:24px"><p style="font-size:16px;font-weight:700;color:var(--green)"><svg width="18" height="18" style="color:var(--green);vertical-align:middle"><use href="#i-zap"/></svg> Your work: <span style="font-size:24px">3-4 hours.</span> <span style="color:var(--muted);font-weight:400">The other 164? Live your life.</span></p></div></div>
+</section>
+
+<!-- EARNINGS -->
+<section class="section" id="earn">
+<div class="fade"><div class="stag" style="background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.12);color:var(--green)"><svg width="12" height="12"><use href="#i-dollar"/></svg> The Numbers</div>
+<h2 class="stit">Here's what you can <span style="color:var(--tiktok)">actually earn.</span></h2>
+<p class="ssub">Three scenarios. Real numbers.</p></div>
+<div class="fade stagger earn-grid">
+<div class="ec"><svg width="32" height="32" style="color:var(--violet)"><use href="#i-heart"/></svg><h3 style="font-size:18px;font-weight:700;color:var(--violet);margin-top:6px">Easy Pace</h3><p style="font-size:12px;color:var(--muted);margin:6px 0">1-2 shoots/month</p><div class="ea" style="color:var(--violet)">€3,000</div><div style="font-size:11px;color:var(--muted)">/month at year 1</div><div class="et" style="background:rgba(139,92,246,.08);color:var(--violet)">Year 1: €14,400</div></div>
+<div class="ec feat"><svg width="32" height="32" style="color:var(--insta)"><use href="#i-trending"/></svg><h3 style="font-size:18px;font-weight:700;color:var(--insta);margin-top:6px">Consistent</h3><p style="font-size:12px;color:var(--muted);margin:6px 0">Weekly content</p><div class="ea" style="color:var(--insta)">€10,000</div><div style="font-size:11px;color:var(--muted)">/month at year 1</div><div class="et" style="background:rgba(236,72,153,.08);color:var(--insta)">Year 1: €78,000</div></div>
+<div class="ec"><svg width="32" height="32" style="color:var(--tiktok)"><use href="#i-rocket"/></svg><h3 style="font-size:18px;font-weight:700;color:var(--tiktok);margin-top:6px">All In</h3><p style="font-size:12px;color:var(--muted);margin:6px 0">Daily content</p><div class="ea" style="color:var(--tiktok)">€20,000</div><div style="font-size:11px;color:var(--muted)">/month at year 1</div><div class="et" style="background:rgba(254,44,85,.08);color:var(--tiktok)">Year 1: €156,000</div></div>
+</div>
+
+<!-- EARNINGS CHART -->
+<div class="fade chart-wrap">
+<h3><svg width="18" height="18" style="color:var(--green);vertical-align:middle;margin-right:6px"><use href="#i-trending"/></svg>Your earnings growth</h3>
+<p>Average monthly income over 12 months</p>
+<svg viewBox="0 0 600 260" class="chart-svg" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="cg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ec4899" stop-opacity=".25"/><stop offset="100%" stop-color="#ec4899" stop-opacity="0"/></linearGradient>
+<linearGradient id="cg2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#fe2c55"/><stop offset="50%" stop-color="#e1306c"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient>
+</defs>
+<!-- Grid lines -->
+<line x1="50" y1="30" x2="580" y2="30" stroke="#f3e8ff" stroke-width="1"/>
+<line x1="50" y1="80" x2="580" y2="80" stroke="#f3e8ff" stroke-width="1"/>
+<line x1="50" y1="130" x2="580" y2="130" stroke="#f3e8ff" stroke-width="1"/>
+<line x1="50" y1="180" x2="580" y2="180" stroke="#f3e8ff" stroke-width="1"/>
+<line x1="50" y1="230" x2="580" y2="230" stroke="#f3e8ff" stroke-width="1"/>
+<!-- Y labels -->
+<text x="42" y="34" fill="#a78a9e" font-size="10" text-anchor="end" font-family="Outfit">€10K</text>
+<text x="42" y="84" fill="#a78a9e" font-size="10" text-anchor="end" font-family="Outfit">€7.5K</text>
+<text x="42" y="134" fill="#a78a9e" font-size="10" text-anchor="end" font-family="Outfit">€5K</text>
+<text x="42" y="184" fill="#a78a9e" font-size="10" text-anchor="end" font-family="Outfit">€2.5K</text>
+<text x="42" y="234" fill="#a78a9e" font-size="10" text-anchor="end" font-family="Outfit">€0</text>
+<!-- X labels -->
+<text x="94" y="250" fill="#a78a9e" font-size="10" text-anchor="middle" font-family="Outfit">M1</text>
+<text x="138" y="250" fill="#a78a9e" font-size="10" text-anchor="middle" font-family="Outfit">M2</text>
+<text x="182" y="250" fill="#a78a9e" font-size="10" text-anchor="middle" font-family="Outfit">M3</text>
+<text x="226" y="250" fill="#a78a9e" font-size="10" text-anchor="middle" font-family="Outfit">M4</text>
+<text x="270" y="250" fill="#a78a9e" font-size="10" text-anchor="middle" font-family="Outfit">M5</text>
+<text x="314" y="250" fill="#a78a9e" font-size="10" text-anchor="middle" font-family="Outfit">M6</text>
+<text x="358" y="250" fill="#a78a9e" font-size="10" text-anchor="middle" font-family="Outfit">M7</text>
+<text x="402" y="250" fill="#a78a9e" font-size="10" text-anchor="middle" font-family="Outfit">M8</text>
+<text x="446" y="250" fill="#a78a9e" font-size="10" text-anchor="middle" font-family="Outfit">M9</text>
+<text x="490" y="250" fill="#a78a9e" font-size="10" text-anchor="middle" font-family="Outfit">M10</text>
+<text x="534" y="250" fill="#a78a9e" font-size="10" text-anchor="middle" font-family="Outfit">M11</text>
+<text x="578" y="250" fill="#a78a9e" font-size="10" text-anchor="middle" font-family="Outfit">M12</text>
+<!-- Area fill -->
+<path d="M94,210 L138,198 L182,182 L226,170 L270,155 L314,138 L358,118 L402,100 L446,80 L490,62 L534,48 L578,30 L578,230 L94,230 Z" fill="url(#cg1)"/>
+<!-- Line -->
+<path d="M94,210 L138,198 L182,182 L226,170 L270,155 L314,138 L358,118 L402,100 L446,80 L490,62 L534,48 L578,30" fill="none" stroke="url(#cg2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- Dots -->
+<circle cx="94" cy="210" r="4" fill="#fe2c55"/><circle cx="138" cy="198" r="4" fill="#fe2c55"/>
+<circle cx="182" cy="182" r="4" fill="#e1306c"/><circle cx="226" cy="170" r="4" fill="#e1306c"/>
+<circle cx="270" cy="155" r="5" fill="#e1306c"/><circle cx="314" cy="138" r="5" fill="#c026d3"/>
+<circle cx="358" cy="118" r="5" fill="#8b5cf6"/><circle cx="402" cy="100" r="5" fill="#8b5cf6"/>
+<circle cx="446" cy="80" r="6" fill="#8b5cf6"/><circle cx="490" cy="62" r="6" fill="#7c3aed"/>
+<circle cx="534" cy="48" r="6" fill="#6d28d9"/><circle cx="578" cy="30" r="7" fill="#5b21b6" stroke="#fff" stroke-width="2"/>
+<!-- End label -->
+<text x="578" y="20" fill="#5b21b6" font-size="12" text-anchor="middle" font-weight="800" font-family="Playfair Display">€10K</text>
+<!-- Start label -->
+<text x="94" y="225" fill="#fe2c55" font-size="10" text-anchor="middle" font-weight="700" font-family="Outfit">€500</text>
+</svg>
+</div>
+
+<div class="fade" style="margin-top:40px">
+<h3 style="font-size:20px;font-weight:800;font-family:'Playfair Display',serif;margin-bottom:6px">Where does the money come from?</h3>
+<p style="color:var(--muted);font-size:13px;margin-bottom:20px">Tap any card to see a real example</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px" class="stagger">
+<div class="glass" style="text-align:center;cursor:pointer;padding:22px" onclick="openM(0)"><svg width="22" height="22" style="color:var(--tiktok)"><use href="#i-chat"/></svg><div style="font-size:22px;font-weight:800;color:var(--tiktok);margin-top:6px">60-70%</div><div style="font-size:11px;font-weight:700">DMs</div></div>
+<div class="glass" style="text-align:center;cursor:pointer;padding:22px" onclick="openM(1)"><svg width="22" height="22" style="color:var(--violet)"><use href="#i-lock"/></svg><div style="font-size:22px;font-weight:800;color:var(--violet);margin-top:6px">15-20%</div><div style="font-size:11px;font-weight:700">Subs</div></div>
+<div class="glass" style="text-align:center;cursor:pointer;padding:22px" onclick="openM(2)"><svg width="22" height="22" style="color:var(--of)"><use href="#i-video"/></svg><div style="font-size:22px;font-weight:800;color:var(--of);margin-top:6px">10-15%</div><div style="font-size:11px;font-weight:700">PPV</div></div>
+<div class="glass" style="text-align:center;cursor:pointer;padding:22px" onclick="openM(3)"><svg width="22" height="22" style="color:var(--green)"><use href="#i-gift"/></svg><div style="font-size:22px;font-weight:800;color:var(--green);margin-top:6px">5-10%</div><div style="font-size:11px;font-weight:700">Tips</div></div>
+</div></div></section>
+
+<!-- FAQ -->
+<section class="section" id="faq"><div class="fade"><h2 class="stit">Questions?</h2><p class="ssub">Fair enough.</p></div><div class="fade" id="faqlist"></div></section>
+
+<!-- CTA -->
+<section class="section" id="start"><div class="fade cta-box">
+<svg width="44" height="44" style="color:var(--rose);margin-bottom:12px"><use href="#i-heart"/></svg>
+<h2 style="font-size:clamp(26px,4vw,34px);font-weight:800;font-family:'Playfair Display',serif;margin:16px 0">Ready to start earning?</h2>
+<p style="color:var(--muted);font-size:16px;line-height:1.75;max-width:480px;margin:0 auto">Fair split, on paper. No fine print. Cancel anytime.</p>
+<div class="cta-deal"><div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:600">You</div><div style="font-size:15px;font-weight:700;color:var(--tiktok);display:flex;align-items:center;gap:6px"><svg width="14" height="14"><use href="#i-camera"/></svg> Content only</div></div><div class="sep"></div><div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:600">We handle</div><div style="font-size:15px;font-weight:700;color:var(--violet);display:flex;align-items:center;gap:6px"><svg width="14" height="14"><use href="#i-zap"/></svg> Everything else</div></div><div class="sep"></div><div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:600">Contract</div><div style="font-size:15px;font-weight:700;color:var(--green);display:flex;align-items:center;gap:6px"><svg width="14" height="14"><use href="#i-check"/></svg> Cancel anytime</div></div></div>
+<button class="cta-btn"><span class="shine"></span><svg width="18" height="18"><use href="#i-chat"/></svg> Let's talk</button>
+</div></section>
+</div>
+
+<div class="footer"><svg width="12" height="12" style="color:var(--soft);vertical-align:middle"><use href="#i-star"/></svg> Real projections for OnlyFans & Fansly</div>
+<div class="mo-bg" id="mo" onclick="closeM()"><div class="mo" onclick="event.stopPropagation()" id="mc"></div></div>
+
+<script>
+window.addEventListener("scroll",function(){document.getElementById("nav").classList.toggle("s",scrollY>50);document.getElementById("prog").style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight)*100)+"%"});
+var F=[{q:"What content do I create?",a:"Whatever you're comfortable with. We discuss together. You set boundaries, always."},{q:"How much time?",a:"2-3 hours per month. One shoot day. We handle everything else."},{q:"Identity protected?",a:"100%. Face optional. Many top creators stay anonymous."},{q:"Payments?",a:"Platforms pay your bank directly, weekly or bi-weekly."},{q:"Can I stop?",a:"Anytime. No lock-in, no penalties, no drama."},{q:"No following?",a:"Most start from zero. That's what our 15-25 daily posts are for."}];
+var fh="";F.forEach(function(f,i){fh+='<div class="fq" id="f'+i+'"><button class="fq-q" onclick="tf('+i+')"><span>'+f.q+'</span><span class="plus">+</span></button><div class="fq-a"><p>'+f.a+'</p></div></div>'});document.getElementById("faqlist").innerHTML=fh;
+function tf(i){var e=document.getElementById("f"+i),o=e.classList.contains("open");document.querySelectorAll(".fq").forEach(function(x){x.classList.remove("open")});if(!o)e.classList.add("open")}
+var M=[
+{icon:'<svg width="28" height="28" style="color:#fe2c55"><use href="#i-chat"/></svg>',title:"DMs",sub:"60-70%",content:'<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px"><div class="chat-b ch-fan"><div class="ch-s">Fan</div>Custom requests?</div><div class="chat-b ch-you"><div class="ch-s">You (AI)</div>Of course! What did you have in mind?</div><div class="chat-b ch-fan"><div class="ch-s">Fan</div>Custom set in red? Extra \u20AC</div><div class="chat-b ch-you"><div class="ch-s">You (AI)</div>\u20AC50 for 10 photos</div><div class="chat-b ch-fan"><div class="ch-s">Fan</div>Yes!! Take my money</div></div>',note:"AI chats 24/7 in your voice.",bonus:"30 min/day personal = double DM income.",earnings:"\u20AC15-80 per conversation"},
+{icon:'<svg width="28" height="28" style="color:#8b5cf6"><use href="#i-lock"/></svg>',title:"Subscriptions",sub:"15-20%",content:'<div style="margin-bottom:20px"><div style="background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1);border-radius:14px;padding:14px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><div><b style="color:#8b5cf6">Basic</b><div style="font-size:11px;color:#7c6882">Feed + posts</div></div><div style="background:#8b5cf6;color:#fff;padding:6px 14px;border-radius:8px;font-weight:800;font-size:13px">\u20AC9.99</div></div><div style="background:rgba(236,72,153,.04);border:1px solid rgba(236,72,153,.08);border-radius:14px;padding:14px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><div><b style="color:#ec4899">VIP</b><div style="font-size:11px;color:#7c6882">+ exclusive</div></div><div style="background:#ec4899;color:#fff;padding:6px 14px;border-radius:8px;font-weight:800;font-size:13px">\u20AC19.99</div></div><div style="background:rgba(0,175,240,.04);border:1px solid rgba(0,175,240,.08);border-radius:14px;padding:14px;display:flex;justify-content:space-between;align-items:center"><div><b style="color:#00aff0">Diamond</b><div style="font-size:11px;color:#7c6882">+ custom + 1on1</div></div><div style="background:#00aff0;color:#fff;padding:6px 14px;border-radius:8px;font-weight:800;font-size:13px">\u20AC49.99</div></div></div>',note:"Monthly autopilot.",earnings:"100 subs \u00D7 \u20AC15 = \u20AC1,500/mo"},
+{icon:'<svg width="28" height="28" style="color:#00aff0"><use href="#i-video"/></svg>',title:"PPV",sub:"10-15%",content:'<div style="margin-bottom:20px"><div style="background:rgba(236,72,153,.03);border:1px solid rgba(236,72,153,.08);border-radius:14px;padding:16px;margin-bottom:10px"><p style="font-size:13px;margin-bottom:10px">Special set</p><div style="background:rgba(236,72,153,.06);border-radius:10px;padding:10px;text-align:center;margin-bottom:8px"><b style="color:#ec4899">Unlock \u20AC15</b></div><div style="display:flex;justify-content:space-between;font-size:11px;color:#7c6882"><span>47 unlocked</span><span style="color:#10b981;font-weight:700">\u20AC705</span></div></div></div>',note:"Shoot once, send to all.",earnings:"200 fans \u00D7 \u20AC15 = \u20AC3,000"},
+{icon:'<svg width="28" height="28" style="color:#10b981"><use href="#i-gift"/></svg>',title:"Tips",sub:"5-10%",content:'<div style="margin-bottom:20px"><div style="background:rgba(236,72,153,.03);border:1px solid rgba(236,72,153,.06);border-radius:12px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><span>Tipped</span><div style="background:rgba(16,185,129,.08);color:#10b981;padding:4px 12px;border-radius:8px;font-weight:700">+\u20AC20</div></div><div style="background:rgba(236,72,153,.03);border:1px solid rgba(236,72,153,.06);border-radius:12px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center"><span>Gift</span><div style="background:rgba(16,185,129,.08);color:#10b981;padding:4px 12px;border-radius:8px;font-weight:700">+\u20AC50</div></div></div>',note:"Tip menu = easy money.",earnings:"\u20AC200-500/mo passive"}
+];
+function openM(i){var m=M[i],h='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px"><div><div style="margin-bottom:6px">'+m.icon+'</div><h3 style="font-size:20px;font-weight:800;font-family:Playfair Display,serif;margin:0 0 4px">'+m.title+'</h3><p style="font-size:12.5px;color:#7c6882">'+m.sub+'</p></div><button class="mo-x" onclick="closeM()">\u2715</button></div>'+m.content+'<div class="mo-note"><p><strong>How:</strong> '+m.note+'</p></div>';if(m.bonus)h+='<div class="mo-bonus"><p><strong>Tip:</strong> '+m.bonus+'</p></div>';h+='<div class="mo-earn">'+m.earnings+'</div>';document.getElementById("mc").innerHTML=h;document.getElementById("mo").classList.add("open");document.body.style.overflow="hidden"}
+function closeM(){document.getElementById("mo").classList.remove("open");document.body.style.overflow=""}
+var obs=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting)e.target.classList.add("v")})},{threshold:.1});
+document.querySelectorAll(".fade,.stagger").forEach(function(el){obs.observe(el)});
+</script>
+</body>
+</html>
