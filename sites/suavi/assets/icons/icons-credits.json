@@ -34,6 +34,17 @@
     "trademark": false
   },
   {
+    "file": "ui-brain.svg",
+    "icon": "ui:brain",
+    "name": "Brain",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  },
+  {
     "file": "ui-calendar-days.svg",
     "icon": "ui:calendar-days",
     "name": "Calendar Days",

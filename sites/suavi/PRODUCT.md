@@ -6,6 +6,15 @@ Maatwerk: websites, procesautomatisering en AI-agents die administratieve taken 
 (offertes, facturatie, klantcommunicatie, planning). Integreert met de bestaande systemen van de
 klant: Teamleader, Odoo, Outlook, Excel.
 
+## Hoe het product werkt (uitleg van de klant)
+- Per klantbedrijf bouwt Suavi een eigen AI-brein dat hun klanten, prijzen en werkwijze kent.
+- Elke medewerker krijgt een eigen werkruimte (persoonlijke assistent) die op dat brein draait en
+  toont wat er te doen is en wat klaarstaat om goed te keuren.
+- Geen gedeelde app: elke klant krijgt een eigen installatie, in zijn eigen Google Workspace of
+  Microsoft 365. Voorwaarde voor klanten: Workspace of 365.
+- Op de site niet vermelden: Google API-verificatie, CASA, technische koppelingsdetails.
+- De naam "Jarvis" niet gebruiken (merk van Marvel).
+
 ## Vaste feiten (uit de briefing, letterlijk aanhouden)
 - Elke uitgaande actie vraagt een menselijke goedkeuring.
 - Alle gegevens blijven binnen de EU.
@@ -20,6 +29,9 @@ facturen, klantmails en planning, en die hun bestaande software willen houden.
 
 ## Hoofdactie
 Plan een kennismaking (tot er een formulier of agenda is: mailto naar een `.example`-adres).
+
+## Kernboodschap
+Een eigen AI-brein voor elke kmo, een eigen werkruimte per medewerker, draait in je eigen omgeving.
 
 ## Niet in de briefing (niet verzinnen)
 Prijzen, klanten, cijfers, testimonials, straat, e-mailadres, telefoon, logo, foto's.
